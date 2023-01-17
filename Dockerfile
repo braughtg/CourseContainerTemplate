@@ -1,5 +1,7 @@
 FROM braughtg/vnc-novnc-base:1.0.0
 
+USER root
+WORKDIR /
 # Add system wide tools and configuration here.
 
 
