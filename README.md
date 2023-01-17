@@ -4,7 +4,7 @@ This repo provides a template for creating course specific containers using the 
  
 ## Creating an Image from the Template
 
-1. Clone the template into a repo.
+1. Create a new repository using this template.
 2. Edit build.bash to specify: 
    - DockerHub Username
    - Image name
