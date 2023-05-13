@@ -2,13 +2,13 @@
 
 This Template Repository provides tools for quickly creating Debian based course/application specific Docker containers that can be used as a virtual machine.  
 
-Images such as these are ideal for building images for development environments or courses .  For example:
+Images such as these are ideal for providing fully configured development or course environments.  For example:
 * An environment for teaching the linux/Unix command line.
-* Providing a web server, database and API handler (e.g. express) for a web development course.
+* Providing a fully configured web server, database and API framework for a full stack web development course.
 * Providing particular compilers, assemblers, etc... for a course that requires specialized tools.
 * Etc.
 
-The Docker container runs Debian Linux with an XFCE4 desktop environment and appears as shown here when in use.
+The Docker container created by this Template runs Debian Linux with an XFCE4 desktop environment and appears as shown here when in use.
 
 ![Debian XFCE4 desktop running in a VNC client](desktop.jpg)
 
@@ -84,20 +84,20 @@ To customize the image:
    TAG="0.0.0"
    PLATFORMS=linux/amd64,linux/arm64
    ```
-3. Add to the `root.bash` script to install any system wide software that is needed and to do any configuration that requires `root` privileges.
-4. Add to the `student.bash` script to do any installations or configuration that should be done as the `student` user.
-5. Add to the `launch.bash` script to start any services or servers that need to be started when the container starts (e.g. Apache, etc...)
-6. Run `build.bash -d` 
-7. Create a new container from the image by adapting the following command based on your information from step #1.  Change `<container name>` to be a name you would like to give the container.
+2. Add to the `root.bash` script to install any system wide software that is needed and to do any configuration that requires `root` privileges.
+3. Add to the `student.bash` script to do any installations or configuration that should be done as the `student` user.
+4. Add to the `launch.bash` script to start any services or servers that need to be started when the container starts (e.g. Apache, etc...)
+5. Run `build.bash -d` 
+6. Create a new container from the image by adapting the following command based on your information from step #1.  Change `<container name>` to be a name you would like to give the container.
    ```
    docker create --name <container name> --publish 5901:5901 --publish 6901:6901 <DOCKER_HUB_USER>/<IMAGE>:<TAG>
    ```
-8. Start the container using Docker Desktop or by adapting the following command.  Change `<container name>` to whatever name you used in the previous step.
+7. Start the container using Docker Desktop or by adapting the following command.  Change `<container name>` to whatever name you used in the previous step.
    ```
    docker start <container name>
    ```
-9. Connect to the container using VNC or a browser as described above in the Quick Start section.
-10. Delete the container and image between builds as necessary for testing and debugging by adapting the following commands.
+8. Connect to the container using VNC or a browser as described above in the Quick Start section.
+9. Delete the container and image between builds as necessary for testing and debugging by adapting the following commands.
    ```
    docker rm <container name>
    docker image rm <DOCKER_HUB_USER>/<IMAGE>:<TAG>
