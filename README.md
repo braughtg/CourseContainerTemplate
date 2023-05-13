@@ -25,7 +25,7 @@ The requirements for creating, testing, and using the image produced by this Tem
 
 ## Quick start
 
-The following instructions will have you build the default image, create a container and connect to it.  Later instructions will describe how to customize the container to your specific purposes.
+The following instructions will have you build the default image, create a container and connect to it.  It provides the fastest way to get a working container up and running to try it out and see if it will be suitable for your use. Later instructions will describe how to customize the container to your specific purposes.
 
 1. Create a new repository using this template.
 2. Build the image using the command:
@@ -73,6 +73,16 @@ The following instructions will have you build the default image, create a conta
    docker image rm somebody/course-container:0.0.0
    ```
 
+## Container credentials
+
+When connecting to the container the default user is automatically logged in.  No credentials will need to be provided to connect to the client. 
+
+The default user has the following credentials:
+* Username: `student`
+* Password: `student`
+
+Note that the `student` user has `sudo` privileges within the container and the password will be required to run commands with `sudo`.
+
 ## Customizing the image
 
 To customize the image:
@@ -84,7 +94,7 @@ To customize the image:
    TAG="0.0.0"
    PLATFORMS=linux/amd64,linux/arm64
    ```
-2. Add to the `root.bash` script to install any system wide software that is needed and to do any configuration that requires `root` privileges.
+2. Add to the `root.bash` script to install any system wide software that is needed and to do any configuration that requires `root` privileges.  One effective strategy is to work in a Terminal in the container to work out the details of what to install and how to do the configuration.  Then transfer the necessary commands to this script.
 3. Add to the `student.bash` script to do any installations or configuration that should be done as the `student` user.
 4. Add to the `launch.bash` script to start any services or servers that need to be started when the container starts (e.g. Apache, etc...)
 5. Run `build.bash -d` 
