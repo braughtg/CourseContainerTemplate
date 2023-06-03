@@ -4,7 +4,7 @@ FROM braughtg/vnc-novnc-base:1.1.0
 # These files are then available for use by the root.bash and user.bash scripts.
 USER root
 WORKDIR /
-COPY --chmod=777 ./files .
+COPY --chmod=777 ./files ./files
 
 # Run the root.bash script here to do all of the root configuration.
 # E.g. apt install, etc...
